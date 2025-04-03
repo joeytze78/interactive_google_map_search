@@ -24,12 +24,13 @@ Before running the application, make sure you have the required dependencies ins
 
 ### Running the Application
 
-Run the Flask Application: After installing the dependencies, start the Flask server by running the following command:
+1. **Run the Flask Application**
+    After installing the dependencies, start the Flask server by running the following command:
     ```bash
     python app.py
 
-Open the Website: Once the Flask server starts, you will see a message in the terminal with a URL. It will look something like:
-Click on the URL in the terminal (or copy and paste it into your browser) to open the web application.
+    Open the Website: Once the Flask server starts, you will see a message in the terminal with a URL. It will look something like: 
+    Click on the URL in the terminal (or copy and paste it into your browser) to open the web application.
 
 ### Using the Application
 Search for a Location:
