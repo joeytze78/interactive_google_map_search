@@ -29,7 +29,8 @@ Before running the application, make sure you have the required dependencies ins
     ```bash
     python app.py
 
-    Open the Website: Once the Flask server starts, you will see a message in the terminal with a URL. It will look something like: 
+2. **Open the Website**
+    Once the Flask server starts, you will see a message in the terminal with a URL.  
     Click on the URL in the terminal (or copy and paste it into your browser) to open the web application.
 
 ### Using the Application
