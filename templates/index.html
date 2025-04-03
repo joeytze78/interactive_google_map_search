@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Property Map</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Property Locations</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search location...">
+            <button id="search-button">Search</button>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <!-- Use the passed API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap" async defer></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
