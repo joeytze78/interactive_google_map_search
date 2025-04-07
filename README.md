@@ -1,15 +1,16 @@
-# interactive_google_map_search
+# interactive_google_map_search 
 
-# Property Search Web Application
+## Property Search Web Application
 
-This is a simple web application that allows users to search for the nearest properties based on a location they type in. The application integrates with the Google Maps API to show the property locations on a map. Users can click on the markers to view the location details.
+This is a simple web application that allows users to search for the nearest properties based on a location they type in. The application integrates with the Google Maps API and PostgreSQL database to show the property locations on a map. Users can click on the markers to view the location details.
 
 ## Requirements
 
 Before running the application, make sure you have the required dependencies installed.
 
 1. Clone the repository or download the project files.
-2. Navigate to the project folder in your terminal.
+2. Create an `.env` file to store the PostgreSQL database keys and google map api key. 
+3. Navigate to the project folder in your terminal.
 
 ### Installation
 
