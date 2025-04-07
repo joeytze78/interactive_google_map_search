@@ -12,7 +12,7 @@ Before running the application, make sure you have the required dependencies ins
 2. Create an `.env` file to store the PostgreSQL database keys and google map api key. 
 3. Navigate to the project folder in your terminal.
 
-### Installation
+## Installation
 
 1. **Create a Virtual Environment** (optional but recommended)
    ```bash
@@ -23,7 +23,7 @@ Before running the application, make sure you have the required dependencies ins
     ```bash
     pip install -r requirements.txt
 
-### Running the Application
+## Running the Application
 
 1. **Run the Flask Application**
     After installing the dependencies, start the Flask server by running the following command:
@@ -34,14 +34,14 @@ Before running the application, make sure you have the required dependencies ins
     Once the Flask server starts, you will see a message in the terminal with a URL.  
     Click on the URL in the terminal (or copy and paste it into your browser) to open the web application.
 
-### Using the Application
+## Using the Application
 Search for a Location:
 
 In the search bar, type the name of the location you want to search for (e.g., "Kuala Lumpur").
 
-Click the Search button.
+Click the `Search` button.
 
-### View Property Locations:
+## View Property Locations:
 
 The map will center on the searched location, and a blue marker will appear at that location.
 
@@ -49,7 +49,7 @@ Red markers represent properties from the database and will remain visible on th
 
 To view more details, click on the markers (both red and blue) on the map. An info window will pop up displaying the property’s name, latitude, and longitude.
 
-### Notes
+## Notes
 The application fetches location data from a PostgreSQL database and displays it on the map.
 
 The markers are dynamically added based on the database and the user's search location.
