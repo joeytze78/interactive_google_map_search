@@ -10,7 +10,6 @@ app = Flask(__name__)
 print(f"Google Maps API Key loaded: {os.getenv('GOOGLE_MAPS_API_KEY') is not None}")
 master_table = os.getenv("MASTER_TABLE")
 google_map_api_key = os.getenv("GOOGLE_MAPS_API_KEY")
-print(google_map_api_key)
 gmaps = googlemaps.Client(key=google_map_api_key)
 
 # Database connection function (same as before)
