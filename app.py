@@ -1,13 +1,17 @@
 from flask import Flask, render_template, jsonify
 from dotenv import load_dotenv
 import os
+import googlemaps
 import psycopg2
 
 load_dotenv()
 app = Flask(__name__)
 
 print(f"Google Maps API Key loaded: {os.getenv('GOOGLE_MAPS_API_KEY') is not None}")
-
+master_table = os.getenv("MASTER_TABLE")
+google_map_api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+print(google_map_api_key)
+gmaps = googlemaps.Client(key=google_map_api_key)
 
 # Database connection function (same as before)
 def get_db_connection():
@@ -40,20 +44,36 @@ def get_places():
         return jsonify({"error": "Database connection failed"}), 500
     
     cursor = conn.cursor()
-    cursor.execute("SELECT prjname, latitude, longitude FROM projectmaster WHERE prjlocation IS NOT NULL")
+    cursor.execute(f"SELECT prjname, prjlocation, latitude, longitude FROM {master_table} WHERE prjlocation IS NOT NULL AND prjlocation != ''")
     rows = cursor.fetchall()
     
     places = []
     for row in rows:
-        prjname, latitude, longitude = row
+        prjname, prjlocation, latitude, longitude = row
+        
+        # If latitude or longitude is missing, fetch it using Google Maps Geocoding API
+        # print(f"Processing {prjname} with location {prjlocation}")
+        if latitude is None or longitude is None:
+            # Use the geocode API to get lat, long
+            geocode_result = gmaps.geocode(prjlocation)
+            if geocode_result:
+                latitude = geocode_result[0]['geometry']['location']['lat']
+                longitude = geocode_result[0]['geometry']['location']['lng']
+                # print(f"Updated lat/long for {prjname}: {latitude}, {longitude}")
+            else:
+                latitude = None
+                longitude = None
+
         places.append({
             "prjname": prjname,
-            "latitude": float(latitude),  # Ensure these are numbers, not strings
-            "longitude": float(longitude)  
+            "prjlocation": prjlocation,
+            "latitude": float(latitude) if latitude is not None else None,  # Ensure these are numbers, not strings
+            "longitude": float(longitude) if longitude is not None else None
         })
     
     cursor.close()
     conn.close()
+    print("Done processing places")
     return jsonify(places)
 
 if __name__ == '__main__':
